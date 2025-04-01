@@ -1,67 +1,36 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-/*
-  COLOR CUSTOMIZATION GUIDE:
-
-  To customize the colors of the website, modify the CSS variables below.
-
-  Main colors:
-  --background: The main background color (currently white)
-  --foreground: The main text color (currently dark gray/black)
-
-  You can use any valid CSS color format (hex, rgb, hsl) to change these values.
-*/
 
 @layer base {
   :root {
-    /* Main colors - CUSTOMIZE THESE */
-    --background: 0 0% 100%; /* White background */
-    --foreground: 20 10% 15%; /* Dark gray text */
+    --background: 0 0% 100%;
+    --foreground: 20 10% 15%;
 
-    /* Button and UI element colors */
-    --primary: 196 100% 47%; /* Blue for primary elements */
-    --primary-foreground: 0 0% 100%; /* White text on primary elements */
+    --primary: 196 100% 47%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary colors */
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    /* Muted colors for subtle elements */
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    /* Accent colors for hover states */
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    /* Card colors */
     --card: var(--background);
     --card-foreground: var(--foreground);
 
-    /* Popup colors */
     --popover: var(--background);
     --popover-foreground: var(--foreground);
 
-    /* Destructive colors for errors */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Border and input colors */
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 196 100% 47%;
 
-    /* Border radius */
     --radius: 0.5rem;
   }
 }
-
-/* @layer base {
-  * {
-    @apply border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-} */

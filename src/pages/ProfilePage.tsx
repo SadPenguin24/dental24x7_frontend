@@ -64,8 +64,8 @@ export default function ProfilePage({}) {
               <div className="space-y-2">
                 <Label htmlFor="name">First Name</Label>
                 <Input
-                  id="name"
-                  name="name"
+                  id="firstName"
+                  name="firstName"
                   defaultValue={profile.firstName}
                   onChange={handleChange}
                   required

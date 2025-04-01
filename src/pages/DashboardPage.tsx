@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import AppointmentCard from "@/components/cards/AppointmentCard";
 import { useAppointment } from "@/contexts/AppointmentContext";
 import { useEffect, useState } from "react";
+import { useDentist } from "@/contexts/DentistContext";
 
 export default function DashboardPage() {
-  const { appointmentData } = useAppointment();
+  const { appointmentData, removeAppointment } = useAppointment();
+  const { removeDentist } = useDentist();
   const [appointments, setAppointments] = useState(
     appointmentData?.appointments
   );
@@ -30,7 +32,13 @@ export default function DashboardPage() {
             <div className="mb-4 flex items-center justify-between">
               <h2 className="text-xl font-semibold">Your Appointments</h2>
               <Link to="/booking">
-                <Button size="sm">
+                <Button
+                  size="sm"
+                  onClick={() => {
+                    removeAppointment();
+                    removeDentist();
+                  }}
+                >
                   <Plus className="mr-1 h-4 w-4" />
                   New Appointment
                 </Button>

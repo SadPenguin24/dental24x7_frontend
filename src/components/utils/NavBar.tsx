@@ -4,10 +4,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useAppointment } from "@/contexts/AppointmentContext";
+import { useDentist } from "@/contexts/DentistContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth();
+  const { removeAppointment } = useAppointment();
+  const { removeDentist } = useDentist();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -35,7 +39,14 @@ export default function Navbar() {
               <div className="flex items-center rounded-full border">
                 <NavItem label="Home" path="/" />
                 <NavItem label="Dashboard" path="/dashboard" />
-                <NavItem label="Booking" path="/booking" />
+                <NavItem
+                  label="Booking"
+                  path="/booking"
+                  callBack={() => {
+                    removeAppointment();
+                    removeDentist();
+                  }}
+                />
               </div>
               <div className="flex items-center rounded-full border border-foreground/20 px-4">
                 <NavItem label="Profile" path="/profile" />
@@ -78,6 +89,10 @@ export default function Navbar() {
                     label="Booking"
                     path="/booking"
                     onClick={toggleMenu}
+                    callBack={() => {
+                      removeAppointment();
+                      removeDentist();
+                    }}
                   />
                   <div className="flex flex-col gap-2 pt-4">
                     <MobileNavItem

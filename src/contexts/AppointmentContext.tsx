@@ -19,6 +19,7 @@ interface AppointmentContextType {
   ) => Promise<AppointmentData>;
   getAppointmentsByUserToken: () => Promise<AppointmentData[]>;
   selectAppointment: (id: string) => void;
+  removeAppointment: () => void;
 }
 
 const AppointmentContext = createContext<AppointmentContextType | undefined>(
@@ -86,6 +87,22 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
       setLoading(false);
     }
   };
+  const removeAppointment = () => {
+    try {
+      setAppointmentData({
+        ...appointmentData,
+        appointment: undefined,
+      });
+    } catch (err: any) {
+      console.error("Error fetching dentist:", err);
+      setError(
+        err.response?.data?.message || "An error occurred during fetching"
+      );
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getAppointmentById = async (id: string) => {
     try {
@@ -125,10 +142,7 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
       throw err;
     } finally {
       setLoading(false);
-      setAppointmentData({
-        ...appointmentData,
-        appointment: undefined,
-      });
+      removeAppointment();
     }
   };
 
@@ -149,16 +163,14 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
       throw err;
     } finally {
       setLoading(false);
-      setAppointmentData({
-        ...appointmentData,
-        appointment: undefined,
-      });
+      removeAppointment();
     }
   };
 
   const value: AppointmentContextType = {
     loading,
     error,
+    removeAppointment,
     createAppointment,
     updateAppointmentById,
     getAppointmentsByUserToken,

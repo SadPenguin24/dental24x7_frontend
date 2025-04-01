@@ -127,7 +127,11 @@ export default function BookingPage() {
 
     if (responseAppointment) {
       toast.success("Appointment Booked!", {
-        description: `Your appointment with ${selectedDentist} on ${format(
+        description: `Your appointment with ${
+          dentistData?.dentists?.find(
+            (dentist) => dentist.id === selectedDentist
+          )?.name
+        } on ${format(
           selectedDate,
           "PPP"
         )} at ${selectedTime} has been confirmed.`,
@@ -153,7 +157,6 @@ export default function BookingPage() {
             <CardTitle>Appointment Details</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* Dentist and Service Selection - Side by Side on Desktop */}
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="dentist">Select Dentist</Label>
@@ -169,7 +172,7 @@ export default function BookingPage() {
                   >
                     <SelectValue placeholder="Choose a dentist" />
                   </SelectTrigger>
-                  <SelectContent className="bg-white">
+                  <SelectContent className="bg-white ">
                     {dentistData?.dentists?.map((dentist) => (
                       <SelectItem key={dentist.id} value={dentist.id}>
                         {dentist.name}

@@ -8,6 +8,7 @@ interface DentistContextType {
   error: string | null;
   getDentists: () => Promise<void>;
   selectDentist: (id: string) => void;
+  removeDentist: () => void;
 }
 
 const DentistContext = createContext<DentistContextType | undefined>(undefined);
@@ -68,10 +69,27 @@ export const DentistProvider = ({ children }: DentistProviderProps) => {
       setLoading(false);
     }
   };
+  const removeDentist = () => {
+    try {
+      setDentistData({
+        ...dentistData,
+        dentist: undefined,
+      });
+    } catch (err: any) {
+      console.error("Error fetching dentist:", err);
+      setError(
+        err.response?.data?.message || "An error occurred during fetching"
+      );
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const value: DentistContextType = {
     loading,
     error,
+    removeDentist,
     selectDentist,
     getDentists,
     dentistData: dentistData || null,

@@ -7,7 +7,6 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/utils/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import { updateUser } from "@/services/user.service";
 import {
@@ -17,9 +16,9 @@ import {
 } from "@/components/ui/popover";
 import { Calendar } from "lucide-react";
 import { format } from "date-fns";
+import { toast } from "sonner";
 
 export default function ProfilePage({}) {
-  const { toast } = useToast();
   const { user, fetchUserProfile } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [profile, setProfileData] = useState({
@@ -42,16 +41,13 @@ export default function ProfilePage({}) {
 
       if (response) {
         setIsEditing(false);
-        toast({
-          title: "Profile Updated",
-          description:
-            "Your profile information has been updated successfully.",
+        toast.success("Profile Updated", {
+          description: `Your profile information has been updated successfully`,
         });
       }
     } catch (error) {
-      toast({
-        title: "Update Error",
-        description: "Something went wrong!",
+      toast.warning("Update Error", {
+        description: `Something went wrong!`,
       });
     }
   };

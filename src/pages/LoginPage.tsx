@@ -2,7 +2,6 @@ import type React from "react";
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useToast } from "@/components/utils/use-toast";
 import {
   Card,
   CardContent,
@@ -16,10 +15,10 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@radix-ui/react-checkbox";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { toast } = useToast();
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,16 +31,13 @@ export default function LoginPage() {
       const user = await login({ email, password });
 
       if (user) {
-        toast({
-          title: "Login Successful",
+        toast.success("Login Successful", {
           description: "Welcome back to 24x7 Dental!",
         });
         navigate("/dashboard");
       } else {
-        toast({
-          title: "Login Failed",
+        toast.warning("Login Failed", {
           description: "Please check your credentials and try again.",
-          variant: "destructive",
         });
       }
     } catch (error) {

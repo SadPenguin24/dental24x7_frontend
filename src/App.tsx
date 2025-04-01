@@ -14,10 +14,12 @@ import ProfilePage from "./pages/ProfilePage";
 import { ProtectedRoute } from "./components/providers/ProtectedRoute";
 import { DentistProvider } from "./contexts/DentistContext";
 import { AppointmentProvider } from "./contexts/AppointmentContext";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <AuthProvider>
+      <Toaster visibleToasts={9} />
       <DentistProvider>
         <AppointmentProvider>
           <Router>

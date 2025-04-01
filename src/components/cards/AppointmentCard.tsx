@@ -1,12 +1,11 @@
 import { format } from "date-fns";
 import { CalendarIcon, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-import { useToast } from "../utils/use-toast";
 import { Card } from "../ui/card";
 import { useAppointment } from "@/contexts/AppointmentContext";
 import { AppointmentInput } from "@/types";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 interface AppointmentCardProps {
   id: string;
@@ -18,7 +17,6 @@ export default function AppointmentCard({
   appointment,
   dentistName,
 }: AppointmentCardProps) {
-  const { toast } = useToast();
   const navigate = useNavigate();
   const { updateAppointmentById, selectAppointment } = useAppointment();
   const { service, status, date, time } = appointment;
@@ -31,8 +29,7 @@ export default function AppointmentCard({
     const cancelledAppointment = await updateAppointmentById(id, data);
 
     if (cancelledAppointment) {
-      toast({
-        title: "Appointment Cancelled",
+      toast.success("Appointment Cancelled", {
         description: "Your Appointment has been Successfully Canceled",
       });
     }

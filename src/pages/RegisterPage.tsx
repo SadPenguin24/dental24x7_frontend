@@ -14,13 +14,12 @@ import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Checkbox } from "../components/ui/checkbox";
-import { useToast } from "@/components/utils/use-toast";
 import { RegisterData } from "@/types";
 import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { toast } = useToast();
   const { register } = useAuth();
 
   const [formData, setFormData] = useState<RegisterData>({
@@ -44,10 +43,8 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     if (formData.password !== confirmPassword) {
-      toast({
-        title: "Passwords do not match",
+      toast.warning("Passwords do not match", {
         description: "Please make sure your passwords match.",
-        variant: "destructive",
       });
       setIsLoading(false);
       return;
@@ -57,10 +54,12 @@ export default function RegisterPage() {
 
     if (newUser) {
       setIsLoading(false);
-      toast({
-        title: "Registration Successful",
+      setIsLoading(false);
+
+      toast.success("Registration Successful", {
         description: "Your account has been created. Welcome to 24x7 Dental!",
       });
+
       navigate("/dashboard");
     }
   };

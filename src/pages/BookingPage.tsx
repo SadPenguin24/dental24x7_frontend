@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Calendar } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
-import { useToast } from "@/components/utils/use-toast";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -23,6 +22,7 @@ import { useDentist } from "@/contexts/DentistContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useAppointment } from "@/contexts/AppointmentContext";
 import { AppointmentData, AppointmentInput } from "@/types";
+import { toast } from "sonner";
 
 // Services data
 export const services = [
@@ -53,7 +53,6 @@ export const services = [
 ];
 export default function BookingPage() {
   const navigate = useNavigate();
-  const { toast } = useToast();
   const { dentistData } = useDentist();
   const { user } = useAuth();
   const { updateAppointmentById, createAppointment, appointmentData } =
@@ -101,11 +100,9 @@ export default function BookingPage() {
       !selectedTime ||
       !selectedService
     ) {
-      toast({
-        title: "Missing Information",
+      toast.warning("Missing Information", {
         description:
           "Please fill in all required fields to book your appointment.",
-        variant: "destructive",
       });
       return;
     }
@@ -129,8 +126,7 @@ export default function BookingPage() {
     }
 
     if (responseAppointment) {
-      toast({
-        title: "Appointment Booked!",
+      toast.success("Appointment Booked!", {
         description: `Your appointment with ${selectedDentist} on ${format(
           selectedDate,
           "PPP"

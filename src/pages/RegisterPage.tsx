@@ -17,10 +17,12 @@ import { Checkbox } from "../components/ui/checkbox";
 import { RegisterData } from "@/types";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
+import { useAppointment } from "@/contexts/AppointmentContext";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const { register } = useAuth();
+  const { getAppointmentsByUserToken } = useAppointment();
 
   const [formData, setFormData] = useState<RegisterData>({
     firstName: "",
@@ -54,13 +56,13 @@ export default function RegisterPage() {
 
     if (newUser) {
       setIsLoading(false);
-      setIsLoading(false);
 
-      toast.success("Registration Successful", {
-        description: "Your account has been created. Welcome to 24x7 Dental!",
+      getAppointmentsByUserToken().finally(() => {
+        toast.success("Registration Successful", {
+          description: "Your account has been created. Welcome to 24x7 Dental!",
+        });
+        navigate("/dashboard");
       });
-
-      navigate("/dashboard");
     }
   };
 

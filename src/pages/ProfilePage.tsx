@@ -130,9 +130,6 @@ export default function ProfilePage({}) {
                         setProfileData({ ...profile, birthday: day })
                       }
                       initialFocus
-                      disabled={(date) =>
-                        date < new Date() || date.getDay() === 0
-                      }
                     />
                   </PopoverContent>
                 </Popover>

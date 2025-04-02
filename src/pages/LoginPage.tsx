@@ -16,10 +16,12 @@ import { Checkbox } from "@radix-ui/react-checkbox";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
+import { useAppointment } from "@/contexts/AppointmentContext";
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const { getAppointmentsByUserToken } = useAppointment();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -31,10 +33,12 @@ export default function LoginPage() {
       const user = await login({ email, password });
 
       if (user) {
-        toast.success("Login Successful", {
-          description: "Welcome back to 24x7 Dental!",
+        getAppointmentsByUserToken().finally(() => {
+          toast.success("Login Successful", {
+            description: "Welcome back to 24x7 Dental!",
+          });
+          navigate("/dashboard");
         });
-        navigate("/dashboard");
       } else {
         toast.warning("Login Failed", {
           description: "Please check your credentials and try again.",

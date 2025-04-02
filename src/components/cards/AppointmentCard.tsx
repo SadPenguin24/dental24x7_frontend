@@ -64,13 +64,18 @@ export default function AppointmentCard({
         </div>
 
         <div className="mt-4 flex justify-end gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => handleReschedule(id)}
-          >
-            Reschedule
-          </Button>
+          {status === "Cancelled" ? (
+            ""
+          ) : (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => handleReschedule(id)}
+            >
+              Reschedule
+            </Button>
+          )}
+
           <Button variant="outline" size="sm" onClick={() => handleCancel(id)}>
             Cancel
           </Button>

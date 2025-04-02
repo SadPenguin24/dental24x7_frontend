@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# Dental 24x7 - Online Appointment Scheduling System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dental 24x7 is a web application that allows patients to book and manage their dental appointments online. The system provides a seamless experience for users to schedule appointments, manage their bookings, and interact with the dental office.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features]()
+- [Tech Stack]()
+- [Installation]()
+- [Usage]()
+- [Screenshots]()
+- [Backend Integration]()
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Patient Booking:** Users can select a dentist, view available time slots, and book an appointment.
+- **User Authentication:** Secure login and registration system for patients.
+- **User Dashboard:** Patients can view, reschedule, or cancel their appointments.
+- **Admin Dashboard (Future Scope):** Manage dentists, appointments, and user profiles.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Frontend:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React (Vite for fast builds)
+- Tailwind CSS (Styling)
+- React Router (Navigation)
+- Axios (API calls)
+- React Toastify (Notifications)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Installation
+
+To run the frontend locally, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/SadPenguin24/dental24x7_frontend.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd dental24x7_frontend
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Create a `.env.local` file in the project root and configure your backend URL:**
+   ```env
+   VITE_BACKEND_URL='http://localhost:5000'
+   ```
+5. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+6. The application should now be running on `http://localhost:5173/`.
+
+## Usage
+
+1. **Patient Registration & Login:**
+   - New users can sign up and log in securely.
+2. **Book an Appointment:**
+   - Select a preferred dentist and available time slot.
+3. **Manage Appointments:**
+   - View upcoming appointments.
+   - Reschedule or cancel an appointment if necessary.
+
+## Screenshots
+
+![1743576817381](image/README/1743576817381.png)
+
+![1743576917104](image/README/1743576917104.png)
+
+![1743577005087](image/README/1743577005087.png)
+
+## Backend Integration
+
+The backend for this project is being developed separately. For API integration, refer to the backend repository:
+
+🔗 **[Backend Repo](https://github.com/SadPenguin24/dental24x7_backend)[Live Demo](https://dental24x7-frontend.onrender.com)**

@@ -2,6 +2,8 @@
 
 Dental 24x7 is a web application that allows patients to book and manage their dental appointments online. The system provides a seamless experience for users to schedule appointments, manage their bookings, and interact with the dental office.
 
+**[Technical Walkthrough Video](https://drive.google.com/file/d/1VXo5dBTQrZb8kUtDNw-bhTteL9FuFsg_/view?usp=sharing)**
+
 ## Table of Contents
 
 - [Features]()
@@ -76,4 +78,6 @@ To run the frontend locally, follow these steps:
 
 The backend for this project is being developed separately. For API integration, refer to the backend repository:
 
-🔗 **[Backend Repo](https://github.com/SadPenguin24/dental24x7_backend)[Live Demo](https://dental24x7-frontend.onrender.com)**
+**[Backend Repo](https://github.com/SadPenguin24/dental24x7_backend)**
+
+**[Live Demo](https://dental24x7-frontend.onrender.com)**

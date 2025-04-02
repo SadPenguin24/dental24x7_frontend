@@ -9,7 +9,7 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const { user, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
 
-  if (loading || !user) {
+  if (loading) {
     return <>Loading...</>;
   }
 

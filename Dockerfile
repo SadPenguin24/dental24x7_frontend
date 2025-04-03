@@ -6,6 +6,8 @@ COPY package.json .
 
 RUN npm install
 
+COPY .env /app/.env
+COPY .env.local /app/.env.local
 COPY . .
 RUN npm run build
 

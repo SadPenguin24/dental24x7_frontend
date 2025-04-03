@@ -12,6 +12,12 @@ export interface AuthResponse {
   user: User;
   message: string;
 }
+
+export interface LoginData {
+  email: string;
+  password: string;
+}
+
 export interface ProfileData {
   email: string | undefined;
   firstName: string | undefined;
@@ -19,12 +25,6 @@ export interface ProfileData {
   phone: string | undefined;
   birthday: Date | undefined;
 }
-
-export interface LoginData {
-  email: string;
-  password: string;
-}
-
 export interface RegisterData {
   email: string;
   password: string;

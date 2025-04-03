@@ -115,9 +115,9 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
 
       return response.data;
     } catch (err: any) {
-      console.error("Error fetching dentists:", err);
+      console.error("Error: fetching dentists:", err);
       setError(
-        err.response?.data?.message || "An error occurred during getting"
+        err.response?.data?.message || "An error occurred while getting"
       );
       throw err;
     } finally {

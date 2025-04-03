@@ -7,18 +7,17 @@ export interface User {
   birthday: Date;
 }
 
+export interface AuthResponse {
+  token: string;
+  user: User;
+  message: string;
+}
 export interface ProfileData {
   email: string | undefined;
   firstName: string | undefined;
   lastName: string | undefined;
   phone: string | undefined;
   birthday: Date | undefined;
-}
-
-export interface AuthResponse {
-  token: string;
-  user: User;
-  message: string;
 }
 
 export interface LoginData {

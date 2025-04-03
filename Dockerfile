@@ -6,8 +6,11 @@ COPY package.json .
 
 RUN npm install
 
+#This may or may not do anything.
+#I'm too afraid to test it
 COPY .env /app/.env
 COPY .env.local /app/.env.local
+
 COPY . .
 RUN npm run build
 

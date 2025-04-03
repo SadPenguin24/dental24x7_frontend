@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = `${import.meta.env.VITE_API_URL}`;
+//only for demonstration purposes
+//otherwise prod won't read the :8080 on live
+const API_URL = `${import.meta.env.VITE_API_URL}:8080/api`;
 
 const api = axios.create({
   baseURL: API_URL,

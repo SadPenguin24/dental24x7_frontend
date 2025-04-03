@@ -46,6 +46,27 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
     }
   }, []);
 
+  const selectAppointment = (id: string) => {
+    try {
+      const selectedAppointment = appointmentData.appointments?.find(
+        (appointment) => appointment.id == id
+      );
+
+      setAppointmentData({
+        ...appointmentData,
+        appointment: selectedAppointment as AppointmentData | undefined,
+      });
+    } catch (err: any) {
+      console.error("Error fetching dentist:", err);
+      setError(
+        err.response?.data?.message || "An error occurred during fetching"
+      );
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const getAppointmentsByUserToken = async () => {
     try {
       setLoading(true);
@@ -67,26 +88,6 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
     }
   };
 
-  const selectAppointment = (id: string) => {
-    try {
-      const selectedAppointment = appointmentData.appointments?.find(
-        (appointment) => appointment.id == id
-      );
-
-      setAppointmentData({
-        ...appointmentData,
-        appointment: selectedAppointment as AppointmentData | undefined,
-      });
-    } catch (err: any) {
-      console.error("Error fetching dentist:", err);
-      setError(
-        err.response?.data?.message || "An error occurred during fetching"
-      );
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  };
   const removeAppointment = () => {
     try {
       setAppointmentData({
@@ -95,27 +96,6 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
       });
     } catch (err: any) {
       console.error("Error fetching dentist:", err);
-      setError(
-        err.response?.data?.message || "An error occurred during fetching"
-      );
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getAppointmentById = async (id: string) => {
-    try {
-      setLoading(true);
-      const response = await appointmentService.getAppointmentById(id);
-      setAppointmentData({
-        ...appointmentData,
-        appointment: response.data,
-      });
-
-      return response.data;
-    } catch (err: any) {
-      console.error("Error fetching dentists:", err);
       setError(
         err.response?.data?.message || "An error occurred during fetching"
       );
@@ -143,6 +123,27 @@ export const AppointmentProvider = ({ children }: AppointmentProviderProps) => {
     } finally {
       setLoading(false);
       removeAppointment();
+    }
+  };
+
+  const getAppointmentById = async (id: string) => {
+    try {
+      setLoading(true);
+      const response = await appointmentService.getAppointmentById(id);
+      setAppointmentData({
+        ...appointmentData,
+        appointment: response.data,
+      });
+
+      return response.data;
+    } catch (err: any) {
+      console.error("Error fetching dentists:", err);
+      setError(
+        err.response?.data?.message || "An error occurred during fetching"
+      );
+      throw err;
+    } finally {
+      setLoading(false);
     }
   };
 

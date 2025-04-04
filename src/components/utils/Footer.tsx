@@ -40,22 +40,6 @@ export default function Footer() {
                   Dashboard
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="#services"
-                  className="text-muted-foreground hover:text-primary"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#about"
-                  className="text-muted-foreground hover:text-primary"
-                >
-                  About Us
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -102,7 +86,7 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Clock className="h-4 w-4 text-primary" />
                 <span className="text-muted-foreground">
-                  Open 24 hours, 7 days a week
+                  Open 24 hours a day x 7 days a week
                 </span>
               </li>
             </ul>

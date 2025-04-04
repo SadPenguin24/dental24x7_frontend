@@ -10,8 +10,8 @@ export default function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-foreground/80">
-          Welcome to the friendliest dentist office in Chicago and Seattle.
-          Let's get you smiling.
+          Welcome to the friendliest dentist office in the world. Let's get you
+          smiling.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

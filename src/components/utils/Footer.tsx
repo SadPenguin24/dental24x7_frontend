@@ -40,6 +40,22 @@ export default function Footer() {
                   Dashboard
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/login"
+                  className="text-muted-foreground hover:text-primary"
+                >
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/register"
+                  className="text-muted-foreground hover:text-primary"
+                >
+                  Register
+                </Link>
+              </li>
             </ul>
           </div>
 
